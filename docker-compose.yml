@@ -1,0 +1,22 @@
+services:
+  brouter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brouter-engine
+    ports:
+      - "17777:17777"
+    volumes:
+      # Persistence pro mapové segmenty (nestahovaly se znovu při restartu)
+      - ./segments:/segments4
+      # Custom routing profily
+      - ./customprofiles:/customprofiles
+    environment:
+      - PORT=17777
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:17777/brouter/profile"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s

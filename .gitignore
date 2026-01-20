@@ -1,0 +1,24 @@
+# BRouter mapové segmenty (velké soubory ~900MB, stahují se automaticky)
+segments/
+*.rd5
+
+# Custom profily - verzovat jen pokud máš vlastní
+# customprofiles/
+
+# Docker
+.docker/
+
+# Logy
+*.log
+
+# OS soubory
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Runtime data (pokud by vznikla lokálně)
+/data/
