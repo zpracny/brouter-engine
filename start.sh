@@ -98,9 +98,14 @@ echo "============================================"
 echo "Spouštím BRouter server..."
 echo "============================================"
 
+# Java memory settings
+JAVA_XMX="${JAVA_XMX:-512m}"
+JAVA_XMS="${JAVA_XMS:-128m}"
+
 # Spuštění Java serveru
 exec java \
-    $JAVA_OPTS \
+    -Xmx${JAVA_XMX} \
+    -Xms${JAVA_XMS} \
     -cp "$BROUTER_JAR" \
     btools.server.RouteServer \
     "$STORAGE_DIR/segments4" \

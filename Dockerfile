@@ -28,7 +28,8 @@ RUN chmod +x /app/start.sh
 
 # Proměnné prostředí
 ENV STORAGE_DIR=/data
-ENV JAVA_OPTS="-Xmx512m -Xms128m"
+ENV JAVA_XMX=512m
+ENV JAVA_XMS=128m
 
 # Exponování portu
 EXPOSE 17777
