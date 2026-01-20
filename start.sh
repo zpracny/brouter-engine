@@ -102,6 +102,10 @@ echo "============================================"
 JAVA_XMX="${JAVA_XMX:-512m}"
 JAVA_XMS="${JAVA_XMS:-128m}"
 
+# Zkopíruj customprofiles do profiles2 (BRouter očekává relativní cestu)
+mkdir -p /app/profiles2/customprofiles
+cp -r /app/customprofiles/* /app/profiles2/customprofiles/ 2>/dev/null || true
+
 # Spuštění Java serveru
 exec java \
     -Xmx${JAVA_XMX} \
@@ -110,6 +114,6 @@ exec java \
     btools.server.RouteServer \
     "$STORAGE_DIR/segments4" \
     /app/profiles2 \
-    /app/customprofiles \
+    customprofiles \
     17777 \
     1
